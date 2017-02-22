@@ -1,0 +1,21 @@
+{
+  "name": "shadesoft/image-bundle",
+  "description": "An image editing bundle using PHP's GD library if other solutions fail for some reason.",
+  "keywords": ["image", "gd", "picture", "symfony", "bundle"],
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "homepage": "https://github.com/ShadeSoft/ImageBundle",
+  "authors": [
+    {
+      "name": "Szabolcs Surányi",
+      "homepage": "http://shadesoft.hu"
+    }
+  ],
+  "autoload": {
+    "psr-4": { "ShadeSoft\\ImageBundle\\": "" }
+  },
+  "require": {
+    "php": ">=5.3",
+    "symfony/symfony": ">=2.3"
+  }
+}
