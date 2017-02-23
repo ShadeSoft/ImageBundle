@@ -1,6 +1,6 @@
 <?php
 
-namespace ShadeSoft\UserAgentParserBundle;
+namespace ShadeSoft\ImageBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
