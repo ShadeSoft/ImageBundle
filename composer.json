@@ -16,6 +16,7 @@
   },
   "require": {
     "php": ">=5.3",
-    "symfony/symfony": ">=2.3"
+    "symfony/symfony": ">=2.3",
+    "shadesoft/gd-image": ">=1.0"
   }
 }

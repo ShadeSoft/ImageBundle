@@ -1,4 +1,4 @@
 services:
     shadesoft_image.sizer:
-        class: ShadeSoft\ImageBundle\Service\ImageSizer
+        class: ShadeSoft\GDImage\Service\ImageSizer
         arguments: []
