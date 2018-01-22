@@ -15,8 +15,8 @@
     "psr-4": { "ShadeSoft\\ImageBundle\\": "" }
   },
   "require": {
-    "php": "^5.3||^7.0",
-    "symfony/symfony": "^2.3||^3.0||^4.0",
+    "php": "^5.3 || ^7.0",
+    "symfony/symfony": "^2.3 || ^3.0 || ^4.0",
     "shadesoft/gd-image": ">=1.0"
   }
 }
