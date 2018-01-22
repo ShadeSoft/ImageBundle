@@ -2,3 +2,4 @@ services:
     shadesoft_image.sizer:
         class: ShadeSoft\GDImage\Service\ImageSizer
         arguments: []
+        public: true
