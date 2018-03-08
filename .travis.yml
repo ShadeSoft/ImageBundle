@@ -12,4 +12,4 @@ before_install:
 install: composer update $COMPOSER_FLAGS
 
 script:
-    - vendor/bin/phpunit
+    - composer validate --strict --no-check-lock
