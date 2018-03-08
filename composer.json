@@ -17,6 +17,6 @@
   "require": {
     "php": "^5.3 || ^7.0",
     "symfony/framework-bundle": "^2.3 || ^3.0 || ^4.0",
-    "shadesoft/gd-image": ">=1.0"
+    "shadesoft/gd-image": "^1.0"
   }
 }
