@@ -2,6 +2,8 @@
 
 > An image editing bundle using PHP's GD library if other solutions fail for some reason.
 
+[![Build Status](https://travis-ci.org/ShadeSoft/ImageBundle.svg?branch=master)](https://travis-ci.org/ShadeSoft/ImageBundle)
+
 ## Installation
 
 ### Step 1: Download the Bundle
