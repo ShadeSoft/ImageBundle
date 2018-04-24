@@ -9,7 +9,8 @@ php:
 before_install:
     - composer self-update
 
-install: composer update $COMPOSER_FLAGS
+install: composer update
 
 script:
     - composer validate --strict --no-check-lock
+    - vendor/bin/phpunit --bootstrap vendor/autoload.php vendor/shadesoft/gd-image/tests
