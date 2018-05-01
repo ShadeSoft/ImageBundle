@@ -9,7 +9,7 @@ class Configuration implements ConfigurationInterface {
 
     public function getConfigTreeBuilder() {
         $builder = new TreeBuilder;
-        $root = $builder->root('shadesoft_image');
+        $root = $builder->root('shade_soft_image');
 
         $root
             ->children()
