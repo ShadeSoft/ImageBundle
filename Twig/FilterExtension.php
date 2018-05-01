@@ -38,7 +38,7 @@ class FilterExtension extends Twig_Extension {
 
     public function widen($img, $width, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . $this->cacheFilename($img, "_w{$width}");
         }
 
         try {
@@ -53,7 +53,7 @@ class FilterExtension extends Twig_Extension {
 
     public function heighten($img, $height, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . $this->cacheFilename($img, "_h{$height}");
         }
 
         try {
@@ -68,7 +68,7 @@ class FilterExtension extends Twig_Extension {
 
     public function maximize($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . $this->cacheFilename($img, "_m{$maxWidth}_{$maxHeight}");
         }
 
         try {
@@ -83,7 +83,7 @@ class FilterExtension extends Twig_Extension {
 
     public function thumbnail($img, $width, $height, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . $this->cacheFilename($img, "_thumb{$width}x{$height}");
         }
 
         try {
@@ -94,5 +94,17 @@ class FilterExtension extends Twig_Extension {
         }
 
         return $targetPath ?: $img;
+    }
+
+    private function cacheFilename($img, $appendix) {
+        $xImg   = explode('.', $img);
+        $count  = count($xImg);
+
+        $filename = '';
+        for($i = 0; $i < $count - 1; $i++) {
+            $filename .= $xImg[$i];
+        }
+
+        return $filename . $appendix . $xImg[$count - 1];
     }
 }
