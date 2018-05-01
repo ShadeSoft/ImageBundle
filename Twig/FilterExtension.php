@@ -105,6 +105,6 @@ class FilterExtension extends Twig_Extension {
             $filename .= $xImg[$i];
         }
 
-        return $filename . $appendix . $xImg[$count - 1];
+        return "{$filename}{$appendix}." . $xImg[$count - 1];
     }
 }
