@@ -10,11 +10,21 @@ use Twig_SimpleFilter;
 class FilterExtension extends Twig_Extension {
 
     private $sizer,
-            $docroot;
+            $docroot,
+            $cacheDir;
 
     public function __construct(ImageSizer $sizer) {
-        $this->sizer = $sizer;
-        $this->docroot = $_SERVER['DOCUMENT_ROOT'];
+        $this->sizer    = $sizer;
+        $this->docroot  = $_SERVER['DOCUMENT_ROOT'];
+        $this->cacheDir = null;
+    }
+
+    public function setConfig($cacheDir) {
+        $this->cacheDir = $cacheDir;
+
+        if($this->cacheDir) {
+            $this->sizer->getCache()->enable();
+        }
     }
 
     public function getFilters() {
@@ -27,8 +37,13 @@ class FilterExtension extends Twig_Extension {
     }
 
     public function widen($img, $width, $outputFormat = null, $targetPath = null) {
+        if(!$targetPath && $this->cacheDir) {
+            $targetPath = $this->cacheDir . $img;
+        }
+
         try {
-            $this->sizer->widen($this->docroot . $img, $width, $outputFormat, $this->docroot . $targetPath);
+            $this->sizer->widen($this->docroot . $img, $width, $outputFormat,
+                $targetPath ? ($this->docroot . $targetPath) : null);
         } catch(FileException $ex) {
             return '';
         }
@@ -37,8 +52,13 @@ class FilterExtension extends Twig_Extension {
     }
 
     public function heighten($img, $height, $outputFormat = null, $targetPath = null) {
+        if(!$targetPath && $this->cacheDir) {
+            $targetPath = $this->cacheDir . $img;
+        }
+
         try {
-            $this->sizer->heighten($this->docroot . $img, $height, $outputFormat, $this->docroot . $targetPath);
+            $this->sizer->heighten($this->docroot . $img, $height, $outputFormat,
+               $targetPath ? ($this->docroot . $targetPath) : null);
         } catch(FileException $ex) {
             return '';
         }
@@ -47,8 +67,13 @@ class FilterExtension extends Twig_Extension {
     }
 
     public function maximize($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null) {
+        if(!$targetPath && $this->cacheDir) {
+            $targetPath = $this->cacheDir . $img;
+        }
+
         try {
-            $this->sizer->maximize($this->docroot . $img, $maxWidth, $maxHeight, $outputFormat, $this->docroot . $targetPath);
+            $this->sizer->maximize($this->docroot . $img, $maxWidth, $maxHeight, $outputFormat,
+               $targetPath ? ($this->docroot . $targetPath) : null);
         } catch(FileException $ex) {
             return '';
         }
@@ -57,8 +82,13 @@ class FilterExtension extends Twig_Extension {
     }
 
     public function thumbnail($img, $width, $height, $outputFormat = null, $targetPath = null) {
+        if(!$targetPath && $this->cacheDir) {
+            $targetPath = $this->cacheDir . $img;
+        }
+
         try {
-            $this->sizer->thumbnail($this->docroot . $img, $width, $height, $outputFormat, $this->docroot . $targetPath);
+            $this->sizer->thumbnail($this->docroot . $img, $width, $height, $outputFormat,
+                $targetPath ? ($this->docroot . $targetPath) : null);
         } catch(FileException $ex) {
             return '';
         }
