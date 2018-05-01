@@ -38,7 +38,7 @@ class FilterExtension extends Twig_Extension {
 
     public function widen($img, $width, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . uniqid();
         }
 
         try {
@@ -53,7 +53,7 @@ class FilterExtension extends Twig_Extension {
 
     public function heighten($img, $height, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . uniqid();
         }
 
         try {
@@ -68,7 +68,7 @@ class FilterExtension extends Twig_Extension {
 
     public function maximize($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . uniqid();
         }
 
         try {
@@ -83,7 +83,7 @@ class FilterExtension extends Twig_Extension {
 
     public function thumbnail($img, $width, $height, $outputFormat = null, $targetPath = null) {
         if(!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir . $img;
+            $targetPath = $this->cacheDir . uniqid();
         }
 
         try {
