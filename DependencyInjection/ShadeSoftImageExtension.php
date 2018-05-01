@@ -15,5 +15,7 @@ class ShadeSoftImageExtension extends Extension {
             new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('services.yml');
+
+        $config = $this->processConfiguration(new Configuration, $configs);
     }
 }
