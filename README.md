@@ -5,6 +5,8 @@
 [![Latest Stable Version](https://poser.pugx.org/shadesoft/image-bundle/version)](https://packagist.org/packages/shadesoft/image-bundle)
 [![Build Status](https://travis-ci.org/ShadeSoft/ImageBundle.svg?branch=master)](https://travis-ci.org/ShadeSoft/ImageBundle)
 [![StyleCI](https://styleci.io/repos/82859264/shield?style=flat&branch=dev)](https://styleci.io/repos/82859264)
+[![Total Downloads](https://poser.pugx.org/shadesoft/image-bundle/downloads)](https://packagist.org/packages/shadesoft/image-bundle)
+[![License](https://poser.pugx.org/shadesoft/image-bundle/license)](https://packagist.org/packages/shadesoft/image-bundle)
 
 ## Installation
 
