@@ -52,6 +52,8 @@ class AppKernel extends Kernel
 
 ## Usage:
 
+### Usage with PHP
+
 ```php
 <?php
 // src/Acme/DemoController.php
@@ -69,6 +71,24 @@ class DemoController extends Controller
 }
 ```
 
+### Usage with Twig
+
+```twig
+{{ asset('/path/to/image'|thumbnail(400, 300)) }}
+{# recommended to use with cache functionality enabled, see below #}
+```
+
 For usage details, please check the
 ['Parameters' and 'Available functions' sections](https://github.com/ShadeSoft/GDImage/blob/master/README.md#parameters)
 of the shadesoft/gd-image documentation.
+
+## Cache
+
+To enable cache, you just need to configure the bundle like below:
+
+```yaml
+# app/config/config.yml for Symfony 2/3, and config/packages/shade_soft_image.yaml for Symfony 4
+
+shade_soft_image:
+    cache_directory: /path/to/desired/cache/directory
+```
