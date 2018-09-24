@@ -2,7 +2,11 @@
 
 > An image editing bundle using PHP's GD library if other solutions fail for some reason.
 
-[![Build Status](https://travis-ci.org/ShadeSoft/ImageBundle.svg?branch=master)](https://travis-ci.org/ShadeSoft/ImageBundle)
+[![Latest Stable Version](https://poser.pugx.org/shadesoft/image-bundle/version)](https://packagist.org/packages/shadesoft/image-bundle)
+[![Build Status](https://travis-ci.org/ShadeSoft/ImageBundle.svg?branch=dev)](https://travis-ci.org/ShadeSoft/ImageBundle)
+[![StyleCI](https://styleci.io/repos/82859264/shield?style=flat&branch=dev)](https://styleci.io/repos/82859264)
+[![Total Downloads](https://poser.pugx.org/shadesoft/image-bundle/downloads)](https://packagist.org/packages/shadesoft/image-bundle)
+[![License](https://poser.pugx.org/shadesoft/image-bundle/license)](https://packagist.org/packages/shadesoft/image-bundle)
 
 ## Installation
 
@@ -48,6 +52,8 @@ class AppKernel extends Kernel
 
 ## Usage:
 
+### Usage with PHP
+
 ```php
 <?php
 // src/Acme/DemoController.php
@@ -65,6 +71,24 @@ class DemoController extends Controller
 }
 ```
 
+### Usage with Twig
+
+```twig
+{{ asset('/path/to/image'|thumbnail(400, 300)) }}
+{# recommended to use with cache functionality enabled, see below #}
+```
+
 For usage details, please check the
 ['Parameters' and 'Available functions' sections](https://github.com/ShadeSoft/GDImage/blob/master/README.md#parameters)
 of the shadesoft/gd-image documentation.
+
+## Cache
+
+To enable cache, you just need to configure the bundle like below:
+
+```yaml
+# app/config/config.yml for Symfony 2/3, and config/packages/shade_soft_image.yaml for Symfony 4
+
+shade_soft_image:
+    cache_directory: /path/to/desired/cache/directory
+```

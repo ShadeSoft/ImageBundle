@@ -1,0 +1,14 @@
+--TEST--
+"thumbnail" filter
+--TEMPLATE--
+{{ "tests/img/test-horizontal.jpg"|thumbnail(5, 5, "jpg", testImg) }}
+{{ testImg|thumbnail(5, 5, "jpg") }}
+{{ testImg|thumbnail(5, 5) }}
+{{ "tests/img/test-square.jpg"|thumbnail(10, 10) }}
+--DATA--
+return array('testImg' => "tests/img/test.jpg")
+--EXPECT--
+tests/img/test.jpg
+tests/img/test.jpg
+tests/img/test.jpg
+tests/img/test-square.jpg

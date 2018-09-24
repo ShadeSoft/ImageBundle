@@ -14,3 +14,5 @@ install: composer update
 script:
     - composer validate --strict --no-check-lock
     - vendor/bin/phpunit --bootstrap vendor/autoload.php vendor/shadesoft/gd-image/tests
+    - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
+    - rm tests/img/test.jpg

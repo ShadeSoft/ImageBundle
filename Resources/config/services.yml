@@ -3,3 +3,9 @@ services:
         class: ShadeSoft\GDImage\Service\ImageSizer
         arguments: []
         public: true
+    shadesoft_image.twig_filter:
+        class: ShadeSoft\ImageBundle\Twig\FilterExtension
+        arguments: ["@shadesoft_image.sizer"]
+        public: false
+        tags:
+            - { name: twig.extension }
