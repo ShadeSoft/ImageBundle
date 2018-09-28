@@ -3,8 +3,8 @@
 > An image editing bundle using PHP's GD library if other solutions fail for some reason.
 
 [![Latest Stable Version](https://poser.pugx.org/shadesoft/image-bundle/version)](https://packagist.org/packages/shadesoft/image-bundle)
-[![Build Status](https://travis-ci.org/ShadeSoft/ImageBundle.svg?branch=dev)](https://travis-ci.org/ShadeSoft/ImageBundle)
-[![StyleCI](https://styleci.io/repos/82859264/shield?style=flat&branch=dev)](https://styleci.io/repos/82859264)
+[![Build Status](https://travis-ci.org/ShadeSoft/ImageBundle.svg)](https://travis-ci.org/ShadeSoft/ImageBundle)
+[![StyleCI](https://styleci.io/repos/82859264/shield?style=flat)](https://styleci.io/repos/82859264)
 [![Total Downloads](https://poser.pugx.org/shadesoft/image-bundle/downloads)](https://packagist.org/packages/shadesoft/image-bundle)
 [![License](https://poser.pugx.org/shadesoft/image-bundle/license)](https://packagist.org/packages/shadesoft/image-bundle)
 
@@ -63,9 +63,9 @@ class DemoController extends Controller
 {
     public function DemoAction(Request $request) {
         $img = '../../web/assets/temp.jpg';
-        
+
         $imgSizer = $this->get('shadesoft_image.sizer');
-        
+
         $imgSizer->thumbnail($img, 400, 300);
     }
 }

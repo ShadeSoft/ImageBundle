@@ -46,8 +46,8 @@ class FilterExtension extends Twig_Extension
         }
 
         try {
-            $this->sizer->widen($this->docroot.$img, $width, $outputFormat,
-                $targetPath ? ($this->docroot.$targetPath) : null);
+            $this->sizer->widen($this->absPath($img), $width, $outputFormat,
+                $targetPath ? ($this->absPath($targetPath)) : null);
         } catch (FileException $ex) {
             return '';
         }
@@ -62,8 +62,8 @@ class FilterExtension extends Twig_Extension
         }
 
         try {
-            $this->sizer->heighten($this->docroot.$img, $height, $outputFormat,
-               $targetPath ? ($this->docroot.$targetPath) : null);
+            $this->sizer->heighten($this->absPath($img), $height, $outputFormat,
+               $targetPath ? ($this->absPath($targetPath)) : null);
         } catch (FileException $ex) {
             return '';
         }
@@ -78,8 +78,8 @@ class FilterExtension extends Twig_Extension
         }
 
         try {
-            $this->sizer->maximize($this->docroot.$img, $maxWidth, $maxHeight, $outputFormat,
-               $targetPath ? ($this->docroot.$targetPath) : null);
+            $this->sizer->maximize($this->absPath($img), $maxWidth, $maxHeight, $outputFormat,
+               $targetPath ? ($this->absPath($targetPath)) : null);
         } catch (FileException $ex) {
             return '';
         }
@@ -94,8 +94,8 @@ class FilterExtension extends Twig_Extension
         }
 
         try {
-            $this->sizer->thumbnail($this->docroot.$img, $width, $height, $outputFormat,
-                $targetPath ? ($this->docroot.$targetPath) : null);
+            $this->sizer->thumbnail($this->absPath($img), $width, $height, $outputFormat,
+                $targetPath ? ($this->absPath($targetPath)) : null);
         } catch (FileException $ex) {
             return '';
         }
@@ -114,5 +114,10 @@ class FilterExtension extends Twig_Extension
         }
 
         return "{$filename}{$appendix}.".$xImg[$count - 1];
+    }
+
+    private function absPath($path)
+    {
+        return str_replace('//', '/', $this->docroot.'/'.$path);
     }
 }
