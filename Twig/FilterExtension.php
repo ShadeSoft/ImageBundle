@@ -118,6 +118,6 @@ class FilterExtension extends Twig_Extension
 
     private function absPath($path)
     {
-        return $this->docroot."/{$path}";
+        return $this->docroot.$path;
     }
 }
