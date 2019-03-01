@@ -10,7 +10,9 @@ use Twig_SimpleFilter;
 class FilterExtension extends Twig_Extension
 {
     private $sizer;
+
     private $docroot;
+
     private $cacheDir;
 
     public function __construct(ImageSizer $sizer)
@@ -109,7 +111,7 @@ class FilterExtension extends Twig_Extension
         $count = count($xImg);
 
         $filename = '';
-        for ($i = 0; $i < $count - 1; $i++) {
+        for ($i = 0; $i < $count - 1; ++$i) {
             $filename .= $xImg[$i];
         }
 
