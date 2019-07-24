@@ -34,78 +34,66 @@ class FilterExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('widen', [$this, 'widen']),
-            new Twig_SimpleFilter('heighten', [$this, 'heighten']),
-            new Twig_SimpleFilter('maximize', [$this, 'maximize']),
-            new Twig_SimpleFilter('thumbnail', [$this, 'thumbnail']),
+            new Twig_SimpleFilter('widen', function($img, $width, $outputFormat = null, $targetPath = null) {
+                if (!$targetPath && $this->cacheDir) {
+                    $targetPath = $this->cacheDir.$this->cacheFilename($img, "_w{$width}", $outputFormat);
+                }
+
+                try {
+                    $this->sizer->widen($this->absPath($img), $width, $outputFormat,
+                        $targetPath ? ($this->absPath($targetPath)) : null);
+                } catch (FileException $ex) {
+                    return '';
+                }
+
+                return $targetPath ?: $img;
+            }),
+            new Twig_SimpleFilter('heighten', function($img, $height, $outputFormat = null, $targetPath = null) {
+                if (!$targetPath && $this->cacheDir) {
+                    $targetPath = $this->cacheDir.$this->cacheFilename($img, "_h{$height}", $outputFormat);
+                }
+
+                try {
+                    $this->sizer->heighten($this->absPath($img), $height, $outputFormat,
+                       $targetPath ? ($this->absPath($targetPath)) : null);
+                } catch (FileException $ex) {
+                    return '';
+                }
+
+                return $targetPath ?: $img;
+            }),
+            new Twig_SimpleFilter('maximize', function($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null) {
+                if (!$targetPath && $this->cacheDir) {
+                    $targetPath = $this->cacheDir.$this->cacheFilename($img, "_m{$maxWidth}_{$maxHeight}", $outputFormat);
+                }
+
+                try {
+                    $this->sizer->maximize($this->absPath($img), $maxWidth, $maxHeight, $outputFormat,
+                       $targetPath ? ($this->absPath($targetPath)) : null);
+                } catch (FileException $ex) {
+                    return '';
+                }
+
+                return $targetPath ?: $img;
+            }),
+            new Twig_SimpleFilter('thumbnail', function($img, $width, $height, $outputFormat = null, $targetPath = null) {
+                if (!$targetPath && $this->cacheDir) {
+                    $targetPath = $this->cacheDir.$this->cacheFilename($img, "_thumb{$width}x{$height}", $outputFormat);
+                }
+
+                try {
+                    $this->sizer->thumbnail($this->absPath($img), $width, $height, $outputFormat,
+                        $targetPath ? ($this->absPath($targetPath)) : null);
+                } catch (FileException $ex) {
+                    return '';
+                }
+
+                return $targetPath ?: $img;
+            }),
         ];
     }
 
-    public function widen($img, $width, $outputFormat = null, $targetPath = null)
-    {
-        if (!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir.$this->cacheFilename($img, "_w{$width}");
-        }
-
-        try {
-            $this->sizer->widen($this->absPath($img), $width, $outputFormat,
-                $targetPath ? ($this->absPath($targetPath)) : null);
-        } catch (FileException $ex) {
-            return '';
-        }
-
-        return $targetPath ?: $img;
-    }
-
-    public function heighten($img, $height, $outputFormat = null, $targetPath = null)
-    {
-        if (!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir.$this->cacheFilename($img, "_h{$height}");
-        }
-
-        try {
-            $this->sizer->heighten($this->absPath($img), $height, $outputFormat,
-               $targetPath ? ($this->absPath($targetPath)) : null);
-        } catch (FileException $ex) {
-            return '';
-        }
-
-        return $targetPath ?: $img;
-    }
-
-    public function maximize($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null)
-    {
-        if (!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir.$this->cacheFilename($img, "_m{$maxWidth}_{$maxHeight}");
-        }
-
-        try {
-            $this->sizer->maximize($this->absPath($img), $maxWidth, $maxHeight, $outputFormat,
-               $targetPath ? ($this->absPath($targetPath)) : null);
-        } catch (FileException $ex) {
-            return '';
-        }
-
-        return $targetPath ?: $img;
-    }
-
-    public function thumbnail($img, $width, $height, $outputFormat = null, $targetPath = null)
-    {
-        if (!$targetPath && $this->cacheDir) {
-            $targetPath = $this->cacheDir.$this->cacheFilename($img, "_thumb{$width}x{$height}");
-        }
-
-        try {
-            $this->sizer->thumbnail($this->absPath($img), $width, $height, $outputFormat,
-                $targetPath ? ($this->absPath($targetPath)) : null);
-        } catch (FileException $ex) {
-            return '';
-        }
-
-        return $targetPath ?: $img;
-    }
-
-    private function cacheFilename($img, $appendix)
+    private function cacheFilename($img, $appendix, $format = null)
     {
         $xImg = explode('.', $img);
         $count = count($xImg);
@@ -115,7 +103,7 @@ class FilterExtension extends Twig_Extension
             $filename .= $xImg[$i];
         }
 
-        return "{$filename}{$appendix}.".$xImg[$count - 1];
+        return "{$filename}{$appendix}.".($format ?: $xImg[$count - 1]);
     }
 
     private function absPath($path)
