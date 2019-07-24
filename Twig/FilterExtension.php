@@ -34,7 +34,7 @@ class FilterExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('widen', function($img, $width, $outputFormat = null, $targetPath = null) {
+            new Twig_SimpleFilter('widen', function ($img, $width, $outputFormat = null, $targetPath = null) {
                 if (!$targetPath && $this->cacheDir) {
                     $targetPath = $this->cacheDir.$this->cacheFilename($img, "_w{$width}", $outputFormat);
                 }
@@ -48,7 +48,7 @@ class FilterExtension extends Twig_Extension
 
                 return $targetPath ?: $img;
             }),
-            new Twig_SimpleFilter('heighten', function($img, $height, $outputFormat = null, $targetPath = null) {
+            new Twig_SimpleFilter('heighten', function ($img, $height, $outputFormat = null, $targetPath = null) {
                 if (!$targetPath && $this->cacheDir) {
                     $targetPath = $this->cacheDir.$this->cacheFilename($img, "_h{$height}", $outputFormat);
                 }
@@ -62,7 +62,7 @@ class FilterExtension extends Twig_Extension
 
                 return $targetPath ?: $img;
             }),
-            new Twig_SimpleFilter('maximize', function($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null) {
+            new Twig_SimpleFilter('maximize', function ($img, $maxWidth, $maxHeight, $outputFormat = null, $targetPath = null) {
                 if (!$targetPath && $this->cacheDir) {
                     $targetPath = $this->cacheDir.$this->cacheFilename($img, "_m{$maxWidth}_{$maxHeight}", $outputFormat);
                 }
@@ -76,7 +76,7 @@ class FilterExtension extends Twig_Extension
 
                 return $targetPath ?: $img;
             }),
-            new Twig_SimpleFilter('thumbnail', function($img, $width, $height, $outputFormat = null, $targetPath = null) {
+            new Twig_SimpleFilter('thumbnail', function ($img, $width, $height, $outputFormat = null, $targetPath = null) {
                 if (!$targetPath && $this->cacheDir) {
                     $targetPath = $this->cacheDir.$this->cacheFilename($img, "_thumb{$width}x{$height}", $outputFormat);
                 }
