@@ -1,10 +1,11 @@
 language: php
 sudo: false
 php:
-    - 5.6
     - 7.0
     - 7.1
     - 7.2
+    - 7.3
+    - 7.4
 
 before_install:
     - phpenv config-add travis.php.ini
@@ -16,4 +17,4 @@ script:
     - composer validate --strict --no-check-lock
     - vendor/bin/phpunit --bootstrap vendor/autoload.php vendor/shadesoft/gd-image/tests
     - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
-    - rm tests/img/test.jpg
+    - rm tests/img/test.jpg 2> /dev/null
