@@ -1,6 +1,6 @@
 <?php
 
-class Project_Tests_IntegrationTest extends \Twig_Test_IntegrationTestCase
+class IntegrationTest extends \Twig\Test\IntegrationTestCase
 {
     public function getExtensions()
     {
