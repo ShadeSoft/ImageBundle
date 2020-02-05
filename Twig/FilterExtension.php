@@ -21,10 +21,10 @@ class FilterExtension extends AbstractExtension
 
     public function __construct()
     {
-        $this->converter = new Converter;
-        $this->sizer     = new Sizer;
-        $this->docroot   = $_SERVER['DOCUMENT_ROOT'];
-        $this->cacheDir  = null;
+        $this->converter = new Converter();
+        $this->sizer = new Sizer();
+        $this->docroot = $_SERVER['DOCUMENT_ROOT'];
+        $this->cacheDir = null;
     }
 
     public function setConfig($cacheDir)
@@ -32,7 +32,7 @@ class FilterExtension extends AbstractExtension
         $this->cacheDir = $cacheDir;
 
         if ($this->cacheDir) {
-            $this->sizer = new CachedSizer;
+            $this->sizer = new CachedSizer();
         }
     }
 
@@ -171,7 +171,8 @@ class FilterExtension extends AbstractExtension
         return $this->docroot.$path;
     }
 
-    private function convert($img, $format, $targetPath, $quality = null) {
+    private function convert($img, $format, $targetPath, $quality = null)
+    {
         try {
             $to = 'to'.ucfirst($format);
             $ni = $this->converter->image($img)

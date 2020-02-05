@@ -5,7 +5,7 @@ class Project_Tests_IntegrationTest extends \Twig\Test\IntegrationTestCase
     public function getExtensions()
     {
         return [
-            new \ShadeSoft\ImageBundle\Twig\FilterExtension,
+            new \ShadeSoft\ImageBundle\Twig\FilterExtension(),
         ];
     }
 
