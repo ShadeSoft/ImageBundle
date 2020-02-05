@@ -1,6 +1,14 @@
 services:
+    shadesoft_image.converter:
+        class: ShadeSoft\GDImage\Converter
+        arguments: []
+        public: true
     shadesoft_image.sizer:
-        class: ShadeSoft\GDImage\Service\ImageSizer
+        class: ShadeSoft\GDImage\Sizer
+        arguments: []
+        public: true
+    shadesoft_image.cached_sizer:
+        class: ShadeSoft\GDImage\CachedSizer
         arguments: []
         public: true
     shadesoft_image.twig_filter:

@@ -17,4 +17,3 @@ script:
     - composer validate --strict --no-check-lock
     - vendor/bin/phpunit --bootstrap vendor/autoload.php vendor/shadesoft/gd-image/tests
     - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
-    - php -r "@unlink('tests/img/test.jpg');"

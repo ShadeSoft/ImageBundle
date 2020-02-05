@@ -1,11 +1,11 @@
 <?php
 
-class IntegrationTest extends \Twig\Test\IntegrationTestCase
+class Project_Tests_IntegrationTest extends \Twig\Test\IntegrationTestCase
 {
     public function getExtensions()
     {
         return [
-            new \ShadeSoft\ImageBundle\Twig\FilterExtension(new \ShadeSoft\GDImage\Service\ImageSizer()),
+            new \ShadeSoft\ImageBundle\Twig\FilterExtension,
         ];
     }
 

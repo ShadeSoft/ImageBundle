@@ -1,0 +1,16 @@
+--TEST--
+converter filters
+--TEMPLATE--
+{{ "tests/img/test-horizontal.jpg"|png(img) }}
+{{ img|gif }}
+{{ img|webp(null, 50) }}
+{{ img|jpg("tests/img/test.jpg", 80) }}
+--DATA--
+return [
+    'img' => "tests/img/test.png"
+]
+--EXPECT--
+tests/img/test.png
+tests/img/test.png.gif
+tests/img/test.png.webp
+tests/img/test.jpg
