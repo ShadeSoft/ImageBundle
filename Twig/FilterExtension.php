@@ -45,7 +45,7 @@ class FilterExtension extends AbstractExtension
                 }
 
                 try {
-                    $ni = $this->sizer->image($this->absPath($img))->widen($width);
+                    $ni = $this->sizer->image($this->absPath($img));
 
                     if ($outputFormat) {
                         $to = 'to'.ucfirst($outputFormat);
@@ -56,7 +56,7 @@ class FilterExtension extends AbstractExtension
                         $ni->target($this->absPath($targetPath));
                     }
 
-                    $ni->save();
+                    $ni->widen($width)->save();
                 } catch (FileException $ex) {
                     return '';
                 }
@@ -69,7 +69,7 @@ class FilterExtension extends AbstractExtension
                 }
 
                 try {
-                    $ni = $this->sizer->image($this->absPath($img))->heighten($height);
+                    $ni = $this->sizer->image($this->absPath($img));
 
                     if ($outputFormat) {
                         $to = 'to'.ucfirst($outputFormat);
@@ -80,7 +80,7 @@ class FilterExtension extends AbstractExtension
                         $ni->target($this->absPath($targetPath));
                     }
 
-                    $ni->save();
+                    $ni->heighten($height)->save();
                 } catch (FileException $ex) {
                     return '';
                 }
@@ -93,7 +93,7 @@ class FilterExtension extends AbstractExtension
                 }
 
                 try {
-                    $ni = $this->sizer->image($this->absPath($img))->maximize($width, $height);
+                    $ni = $this->sizer->image($this->absPath($img));
 
                     if ($outputFormat) {
                         $to = 'to'.ucfirst($outputFormat);
@@ -104,7 +104,7 @@ class FilterExtension extends AbstractExtension
                         $ni->target($this->absPath($targetPath));
                     }
 
-                    $ni->save();
+                    $ni->maximize($width, $height)->save();
                 } catch (FileException $ex) {
                     return '';
                 }
@@ -117,7 +117,7 @@ class FilterExtension extends AbstractExtension
                 }
 
                 try {
-                    $ni = $this->sizer->image($this->absPath($img))->thumbnail($width, $height);
+                    $ni = $this->sizer->image($this->absPath($img));
 
                     if ($outputFormat) {
                         $to = 'to'.ucfirst($outputFormat);
@@ -128,7 +128,7 @@ class FilterExtension extends AbstractExtension
                         $ni->target($this->absPath($targetPath));
                     }
 
-                    $ni->save();
+                    $ni->thumbnail($width, $height)->save();
                 } catch (FileException $ex) {
                     return '';
                 }
