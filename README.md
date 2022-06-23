@@ -1,5 +1,6 @@
 # Image Bundle for Symfony
 
+> ABANDONED - Please use [GDImage](https://github.com/ShadeSoft/GDImage) instead.
 > An image editing bundle using PHP's GD library if other solutions fail for some reason.
 
 [![Latest Stable Version](https://poser.pugx.org/shadesoft/image-bundle/version)](https://packagist.org/packages/shadesoft/image-bundle)
